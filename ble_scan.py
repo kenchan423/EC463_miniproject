@@ -3,6 +3,7 @@
 """
 Example of scanning Bluetooth Low Energy (BLE) devices.
 Requires a Linux computer due to gattlib underlying BLE scanning requiring Glib.
+Edited the file to make sure it wrote the data in a for loop
 """
 from __future__ import annotations
 import argparse
@@ -32,14 +33,19 @@ logpath = P.logpath
 
 print(f"Scanning BLE devices for {timeout} seconds")
 
+file1 = open("ble_scan.txt", "w")
+
 svc = DiscoveryService()
 ble_devs = svc.discover(timeout)
 
-for u, n in ble_devs.items():
+for _ in range(5):
     
-    print(u, n)
+    for u, n in ble_devs.items():
+    
+        print(u, n)
 
-    file1.write(u + n + "\n")
+        file1.write(u + n + "\n")
         
-file1.write("\n")
-    
+    file1.write("\n")
+
+file1.close()
