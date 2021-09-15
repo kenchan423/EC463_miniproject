@@ -5,7 +5,6 @@ Example of scanning Bluetooth Low Energy (BLE) devices.
 Requires a Linux computer due to gattlib underlying BLE scanning requiring Glib.
 Edited the file to make sure it wrote the data in a for loop
 """
-from __future__ import annotations
 import argparse
 import pprint
 import re
